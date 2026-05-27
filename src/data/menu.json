@@ -140,6 +140,19 @@
             "en": "Tagliatelle tossed with pan-seared tenderloin strips, wild mushrooms, and a rich, creamy four-pepper sauce. Topped with aged Parmesan.",
             "sv": "Tagliatelle med strimlad oxfilé, skogssvamp och en krämig pepparsås gjord på fyra sorters peppar. Toppas med hyvlad Parmesan."
           }
+        },
+        {
+          "id": "beef_beer",
+          "name": {
+            "en": "Slow Braised Beef in Own Beer",
+            "sv": "Långtkokat Nötkött i Eget Öl"
+          },
+          "price": 295,
+          "classic": true,
+          "description": {
+            "en": "Fall-apart tender beef slow-braised for hours in our house-brewed dark ale with root vegetables and fresh herbs. Served with creamy potato mash, roasted seasonal root vegetables, and a rich beer-infused gravy.",
+            "sv": "Smörstekt nötkött kokt i flera timmar i vårt eget mörka öl med rotgrönsaker och färska örter. Serveras med kräftigt potatismos, ugnsrostade rotgrönsaker och en mustig sås kryddad med öl."
+          }
         }
       ]
     }
