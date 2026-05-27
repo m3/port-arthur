@@ -239,9 +239,11 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   transition: all 0.3s ease;
   font-weight: 500;
+  min-width: 105px; /* Stable width to prevent layout shifting on text changes */
 }
 
 .lang-toggle:hover {
@@ -1046,6 +1048,34 @@ body {
   }
 }
 
+/* Tablet & Medium Screen Header Scale Optimizations */
+@media (max-width: 1200px) {
+  .nav-links {
+    gap: 18px; /* Tighter navigation link gap */
+  }
+  .header-actions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 0.85rem; /* Smaller navigation text */
+  }
+  .logo-title {
+    font-size: 1.25rem; /* Slightly smaller logo text */
+  }
+}
+
+@media (max-width: 960px) {
+  .nav-links {
+    display: none !important; /* Hide navigation links early on medium viewports to prevent wrapping and layout jumping */
+  }
+}
+
 @media (max-width: 768px) {
   body {
     font-size: 15px;
@@ -1071,6 +1101,7 @@ body {
   }
   .lang-toggle {
     padding: 6px 10px; /* Slimmer button padding */
+    min-width: unset; /* Remove min-width since text is hidden on mobile */
   }
   :root {
     --logo-height: 36px; /* Decrease logo image height dynamically */
