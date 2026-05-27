@@ -42,7 +42,7 @@ const translations = {
     contactPhone: "Telefon",
     contactEmail: "E-post",
     contactAddress: "Adress",
-    contactAddressVal: "Gamla varvsgatan 1, 417 56 Göteborg",
+    contactAddressVal: "Gamla Ceresgatan 3, 417 58 Göteborg",
     footerText: "Port Arthur byggdes 1918 och är Göteborgs sista kvarvarande genuina sjömanskrog. Varmt välkommen hem till oss på Älvstranden.",
     rights: "Alla rättigheter förbehållna. Nydesignad med premium stack.",
     days: {
@@ -95,7 +95,7 @@ const translations = {
     contactPhone: "Phone",
     contactEmail: "Email",
     contactAddress: "Address",
-    contactAddressVal: "Gamla varvsgatan 1, 417 56 Göteborg",
+    contactAddressVal: "Gamla Ceresgatan 3, 417 58 Göteborg",
     footerText: "Built in 1918, Port Arthur is the last remaining genuine seamen's pub in Gothenburg. A warm welcome home to us at Älvstranden.",
     rights: "All rights reserved. Re-architected with premium stack.",
     days: {
@@ -284,7 +284,7 @@ export default function App() {
           <div className="info-item">
             <h3>{t.contactAddress}</h3>
             <p>
-              <a href="https://maps.google.com/?q=Gamla+varvsgatan+1,+417+56+Göteborg" target="_blank" rel="noopener noreferrer">
+              <a href="https://maps.google.com/?q=Port+Arthur,+Gamla+Ceresgatan+3,+417+58+Göteborg" target="_blank" rel="noopener noreferrer">
                 {t.contactAddressVal}
               </a>
             </p>
@@ -496,7 +496,7 @@ export default function App() {
                   <div className="contact-text">
                     <h4>{t.contactAddress}</h4>
                     <p>
-                      <a href="https://maps.google.com/?q=Gamla+varvsgatan+1,+417+56+Göteborg" target="_blank" rel="noopener noreferrer">
+                      <a href="https://maps.google.com/?q=Port+Arthur,+Gamla+Ceresgatan+3,+417+58+Göteborg" target="_blank" rel="noopener noreferrer">
                         {t.contactAddressVal}
                       </a>
                     </p>
@@ -506,7 +506,7 @@ export default function App() {
 
               <div className="map-wrapper">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2130.640242137684!2d11.936665715878426!3d57.70889298135246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464ff342898a4441%3A0xe543c72b21c4b72b!2sGamla%20varvsgatan%201%2C%20417%2056%20Göteborg!5e0!3m2!1sen!2sse!4v1684340000000!5m2!1sen!2sse" 
+                  src="https://maps.google.com/maps?q=Port%20Arthur%2C%20Gamla%20Ceresgatan%203%2C%20417%2058%20G%C3%B6teborg&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                   allowFullScreen="" 
                   loading="lazy" 
                   title="Port Arthur Google Map Embed"
@@ -574,7 +574,7 @@ export default function App() {
           <span>📞</span>
           {lang === 'sv' ? 'Ring' : 'Call'}
         </a>
-        <a href="https://maps.google.com/?q=Gamla+varvsgatan+1,+417+56+Göteborg" target="_blank" rel="noopener noreferrer" className="mobile-action-item">
+        <a href="https://maps.google.com/?q=Port+Arthur,+Gamla+Ceresgatan+3,+417+58+Göteborg" target="_blank" rel="noopener noreferrer" className="mobile-action-item">
           <span>📍</span>
           {lang === 'sv' ? 'Hitta' : 'Route'}
         </a>
