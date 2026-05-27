@@ -127,6 +127,7 @@ export default function App() {
   });
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('mains');
+  const [showVintageMenu, setShowVintageMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [currentDay, setCurrentDay] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
@@ -141,6 +142,14 @@ export default function App() {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => {
+    if (showVintageMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showVintageMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -388,6 +397,15 @@ export default function App() {
                 {cat.name[lang]}
               </button>
             ))}
+            
+            {/* Elegant Vintage Printable Menu Trigger */}
+            <button 
+              className="menu-tab vintage-menu-btn"
+              onClick={() => setShowVintageMenu(true)}
+              style={{ borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
+            >
+              📜 {lang === 'sv' ? 'Klassisk Pappersmeny' : 'Classic Printed Menu'}
+            </button>
           </div>
 
           {/* Menu Items Grid */}
@@ -604,6 +622,552 @@ export default function App() {
           {lang === 'sv' ? 'Boka' : 'Book'}
         </a>
       </div>
+
+      {/* Vintage Parchment Printable Menu Modal Overlay */}
+      {showVintageMenu && (
+        <div className="vintage-menu-overlay" onClick={(e) => {
+          if (e.target.classList.contains('vintage-menu-overlay')) {
+            setShowVintageMenu(false);
+          }
+        }}>
+          <div className="vintage-menu-controls">
+            <button className="btn-print" onClick={() => window.print()}>
+              🖨️ {lang === 'sv' ? 'Skriv ut' : 'Print'}
+            </button>
+            <button className="btn-close" onClick={() => setShowVintageMenu(false)}>
+              ❌ {lang === 'sv' ? 'Stäng' : 'Close'}
+            </button>
+          </div>
+          
+          <div className="vintage-menu-container">
+            {/* Corner ornaments */}
+            <div className="v-corner tl"><svg viewBox="0 0 60 60"><path d="M5 25 Q5 5 25 5 M10 30 Q10 10 30 10 M5 15 L15 15 M15 5 L15 15"/></svg></div>
+            <div className="v-corner tr"><svg viewBox="0 0 60 60"><path d="M5 25 Q5 5 25 5 M10 30 Q10 10 30 10 M5 15 L15 15 M15 5 L15 15"/></svg></div>
+            <div className="v-corner bl"><svg viewBox="0 0 60 60"><path d="M5 25 Q5 5 25 5 M10 30 Q10 10 30 10 M5 15 L15 15 M15 5 L15 15"/></svg></div>
+            <div className="v-corner br"><svg viewBox="0 0 60 60"><path d="M5 25 Q5 5 25 5 M10 30 Q10 10 30 10 M5 15 L15 15 M15 5 L15 15"/></svg></div>
+
+            {/* Compass rose */}
+            <svg className="v-compass" viewBox="0 0 100 100" fill="none" stroke="#1a2230" strokeWidth="0.7">
+              <circle cx="50" cy="50" r="38" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" strokeWidth="0.4" opacity="0.5"/>
+              <path d="M50 12 L54 50 L50 88 L46 50 Z" fill="#1a2230" stroke="none"/>
+              <path d="M12 50 L50 54 L88 50 L50 46 Z" fill="#1a2230" opacity="0.4" stroke="none"/>
+              <path d="M23 23 L50 50 L77 77 M77 23 L50 50 L23 77" strokeWidth="0.4"/>
+              <text x="50" y="9" textAnchor="middle" fontSize="8" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none">N</text>
+              <text x="50" y="98" textAnchor="middle" fontSize="8" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none">S</text>
+              <text x="94" y="53" textAnchor="middle" fontSize="8" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none">E</text>
+              <text x="6" y="53" textAnchor="middle" fontSize="8" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none">W</text>
+            </svg>
+
+            {/* Stamp */}
+            <svg className="v-stamp" viewBox="0 0 100 100" fill="none" stroke="#1a2230" strokeWidth="1.2">
+              <circle cx="50" cy="50" r="44"/>
+              <circle cx="50" cy="50" r="36" strokeWidth="0.5"/>
+              <text x="50" y="46" textAnchor="middle" fontSize="9" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none" letterSpacing="1">GÖTEBORG</text>
+              <text x="50" y="58" textAnchor="middle" fontSize="9" fontFamily="IM Fell English SC" fill="#1a2230" stroke="none" letterSpacing="1">ESTD 1918</text>
+              <path d="M30 64 L70 64" strokeWidth="0.5"/>
+              <path d="M30 36 L70 36" strokeWidth="0.5"/>
+            </svg>
+
+            {/* Masthead */}
+            <header className="v-masthead">
+              <h1>PORT ARTHUR</h1>
+              <div className="v-sub">{lang === 'sv' ? 'PUB & BRYGGHUS' : 'PUB & BREWHOUSE'}</div>
+              <div className="v-anchor-divider">
+                <span className="v-line"></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+                  <circle cx="12" cy="4" r="1.5"/>
+                  <line x1="12" y1="5.5" x2="12" y2="20"/>
+                  <line x1="8" y1="9" x2="16" y2="9"/>
+                  <path d="M5 14 Q5 20 12 20 Q19 20 19 14"/>
+                </svg>
+                <span className="v-line"></span>
+              </div>
+              <div className="v-estd">{lang === 'sv' ? 'ESTD 1918' : 'ESTD 1918'}</div>
+            </header>
+
+            {/* Featured new dish */}
+            <div className="v-featured">
+              <h3>{lang === 'sv' ? 'STOUTBRÄSERAD HÖGREV' : 'STOUT-BRAISED CHUCK ROLL'}</h3>
+              <p className="v-desc">
+                {lang === 'sv' 
+                  ? 'Långbräserad högrev i vår egen Hamnstout, serveras på brynt smörpotatismos med picklad rödlök, rostad rotselleri & en knaperstekt maltsmula.' 
+                  : 'Slow stout-braised beef chuck roll in our own Harbor Stout. Served on browned-butter mashed potatoes with pickled red onion, roasted celeriac, and a crispy malt crumb.'}
+              </p>
+              <p className="v-pair">
+                {lang === 'sv' 
+                  ? '◆ Rekommenderas med ett glas Hamnstout, 6,2%' 
+                  : '◆ Recommended with a glass of Harbor Stout, 6.2%'}
+              </p>
+              <p className="v-price">229</p>
+            </div>
+
+            {/* Main grid */}
+            <div className="v-grid">
+
+              {/* COLUMN 1: Starters */}
+              <div className="v-section">
+                <h2>{lang === 'sv' ? 'FÖRRÄTTER' : 'STARTERS'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'OST & CHARK' : 'CHEESE & CHARCUTERIE'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">189</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Kockens val av lokala ostar & charkuterier, marmelad, knäcke.' 
+                      : "Chef's choice of local cheeses & cold cuts, marmalade, crispbread."}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pilsner' : 'House Pilsner'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'SCAMPI' : 'GARLIC SCAMPI'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">139</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Fräst i vitt vin, chili & vitlök, serveras med smörstekt baguette.' 
+                      : 'Sautéed in white wine, chili & garlic, served with butter-toasted baguette.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Witbier' : 'House Witbier'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'S.O.S — TALLRIK' : 'S.O.S — HERRING PLATE'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">165</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Tre sorters sill, västerbottensost, färsk potatis, smör & knäcke.' 
+                      : 'Three types of herring, Västerbotten cheese, new potatoes, butter & crispbread.'}{' '}
+                    <span className="v-tags"><span className="v-tag gf">GF</span></span>
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'OP Andersson eller Hamnpilsner' : 'OP Andersson or Harbor Pilsner'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'TOAST SKAGEN' : 'TOAST SKAGEN'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">189 / 209</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Krämig skagenröra med pepparrot på smörstekt bröd. Halv eller hel.' 
+                      : 'Creamy shrimp salad with horseradish on butter-toasted bread. Half or whole.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Witbier' : 'House Witbier'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'RÅBIFF' : 'STEAK TARTARE'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">189 / 265</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Med kapris, cornichoner, persilja, dijon & äggula. Halv eller hel. ' 
+                      : 'With capers, cornichons, parsley, dijon & egg yolk. Half or whole. '}{' '}
+                    <em>{lang === 'sv' ? 'Lägg till pommes 35 kr.' : 'Add French fries 35 SEK.'}</em>
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Amber Ale' : 'House Amber Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'RÄKMACKA' : 'SHRIMP SANDWICH'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">219</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Surdegsbröd med handskalade räkor, dillmajonnäs, sallad, gurka, tomat, picklad silverlök & ägg.' 
+                      : 'Sourdough bread with hand-peeled shrimp, dill mayonnaise, lettuce, cucumber, tomato, pickled white onion & egg.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pilsner' : 'House Pilsner'}</div>
+                </div>
+              </div>
+
+              {/* COLUMN 2: KÖTT (MAINS) */}
+              <div className="v-section">
+                <h2>{lang === 'sv' ? 'KÖTT' : 'MAINS'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'PLANKSTEK' : 'PLANK STEAK'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">355</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Grillad oxfilé med gratinerad duchessepotatis, baconlindad haricots verts, tomat, paprika & bearnaisesås.' 
+                      : 'Grilled beef tenderloin served on an oak plank with piped duchesse potatoes, bacon-wrapped green beans, tomato, pepper & béarnaise sauce.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Hamnstout' : 'House Harbor Stout'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'LAMMROSTBIFF' : 'LAMB ROAST BEEF'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">265</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Med potatisgratäng, vitlöksfrästa champinjoner, haricots verts & rödvinsreduktion.' 
+                      : 'Served with potato gratin, garlic-sautéed mushrooms, green beans & red wine reduction.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Brown Ale' : 'House Brown Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'WIENERSCHNITZEL' : 'WIENER SCHNITZEL'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">229</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Med rostad potatis, rödvinsreduktion, kapris & gröna ärtor.' 
+                      : 'With roasted potatoes, red wine reduction, capers & green peas.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pilsner' : 'House Pilsner'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'HÖGREVSBURGARE' : 'CHUCK ROLL BURGER'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">209</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Chilimajo, krispsallad, tomat, picklad silverlök, knaperstekt bacon, BBQ, cheddarost & pommes frites.' 
+                      : 'Chili mayo, crisp lettuce, tomato, pickled white onion, crispy bacon, BBQ, cheddar cheese & French fries.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pale Ale' : 'House Pale Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'KALVKÖTTBULLAR' : 'VEAL MEATBALLS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">209</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Dubbelmalen kalvfärs, potatismos, gräddsås, rårörda lingon & pressgurka.' 
+                      : 'Double-ground veal, mashed potatoes, cream gravy, lingonberries & pickled cucumber.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Amber Ale' : 'House Amber Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'PEPPARPASTA' : 'PEPPER PASTA'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">219</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Med oxfilé, champinjoner & pepparsås, toppas med riven parmesan.' 
+                      : 'With beef tenderloin, mushrooms & creamy pepper sauce, topped with grated parmesan.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Brown Ale' : 'House Brown Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'CEASARSALLAD' : 'CAESAR SALAD'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">199 / 219</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Krispig romansallad, ceasardressing, bacon, brödkrutonger & riven grano. Kyckling eller räkor.' 
+                      : 'Crisp romaine lettuce, caesar dressing, bacon, croutons & grated grano. Chicken or shrimp.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pilsner' : 'House Pilsner'}</div>
+                </div>
+              </div>
+
+              {/* COLUMN 3: FISK (FISH) & GRÖNT (GREENS) */}
+              <div className="v-section">
+                <h2>{lang === 'sv' ? 'FISK' : 'FISH'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'FISH & CHIPS' : 'FISH & CHIPS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">219</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Friterad i vår egen pilsnerfrityr, serveras med dansk remouladsås.' 
+                      : 'Fried in our own pilsner batter, served with Danish remoulade sauce.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pilsner' : 'House Pilsner'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'FISK & SKALDJUR' : 'FISH & SHELLFISH'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">229</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Torsk, gratinerad potatismos & hummerbisque, toppas med handskalade räkor & vinkokta musslor.' 
+                      : 'Cod with piped mashed potatoes, lobster bisque, topped with hand-peeled shrimp & wine-cooked mussels.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Witbier' : 'House Witbier'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'MOULES FRITES' : 'MOULES FRITES'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">249</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Blåmusslor kokta i vitt vin, chili, grädde, vitlök & persilja, serveras med pommes frites.' 
+                      : 'Blue mussels steamed in white wine, chili, cream, garlic & parsley, served with French fries.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Witbier' : 'House Witbier'}</div>
+                </div>
+
+                <h2 style={{ marginTop: '24px' }}>{lang === 'sv' ? 'GRÖNT' : 'GREENS'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'CHILISOTAD HALLOUMI' : 'CHILI-BLACKENED HALLOUMI'}{' '}<span className="v-tags"><span className="v-tag v">V</span></span></span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">219</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Vitlöksfrästa champinjoner, haricots verts, rostad potatis & fetaostkräm.' 
+                      : 'Garlic-sautéed mushrooms, green beans, roasted potatoes & feta cheese cream.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Pale Ale' : 'House Pale Ale'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'ÖLBAKAD ROTGRATÄNG' : 'BEER-BAKED ROOT GRATIN'}{' '}<span className="v-tags"><span className="v-tag vg">VG</span></span></span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">199</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Långbakade rotsaker i pilsnerbuljong, krispig humlebrödssmula, picklad lök & krämig dillsås på havre.' 
+                      : 'Slow-baked root vegetables in pilsner broth, crispy hop breadcrumbs, pickled onion & creamy oat dill sauce.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Witbier' : 'House Witbier'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'SVAMPRISOTTO' : 'MUSHROOM RISOTTO'}{' '}<span className="v-tags"><span className="v-tag v">V</span><span className="v-tag gf">GF</span></span></span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">209</span>
+                  </div>
+                  <div className="v-dish-desc">
+                    {lang === 'sv' 
+                      ? 'Skogssvamp, västerbottensost, brynt smör, rostade hasselnötter & persiljeolja.' 
+                      : 'Forest mushrooms, Västerbotten cheese, browned butter, roasted hazelnuts & parsley oil.'}
+                  </div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Husets Brown Ale' : 'House Brown Ale'}</div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* BARMAT (full width) */}
+            <div className="v-barmat-section">
+              <h2>{lang === 'sv' ? 'BARMAT & SMÅPLOCK' : 'BAR FOOD & SNACKS'}</h2>
+              <div className="v-section-ornament">· · ·</div>
+              <div className="v-barmat-grid">
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'SALTROSTADE MANDLAR' : 'SALT-ROASTED ALMONDS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">65</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Med rosmarin & flingsalt.' : 'With rosemary & sea salt flakes.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'BRYGGARENS PRETZEL' : "BREWER'S PRETZEL"}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">89</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Varm kringla med senap & ölostkräm.' : 'Warm soft pretzel served with mustard & beer cheese dip.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'POMMES & AIOLI' : 'FRIES & AIOLI'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">79</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Tunna pommes med rökt vitlöksaioli.' : 'Thin-cut French fries with smoked garlic aioli.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'FRITERAD HALLOUMI' : 'FRIED HALLOUMI'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">95</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Med honung, chili & flingsalt.' : 'Drizzled with honey, fresh chili & sea salt.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'SILLKROSTINI' : 'HERRING CROSTINI'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">85</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Senapssill på rågbröd med dill & rödlök.' : 'Mustard herring on dark rye toast with fresh dill & red onion.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'CHARKCHIPS' : 'CHARCUTERIE CHIPS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">99</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Krispig lufttorkad skinka med picklade gurkor.' : 'Crispy air-dried ham served with pickled cornichons.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'PICKLESTALLRIK' : 'PICKLE PLATE'}{' '}<span className="v-tags"><span className="v-tag vg">VG</span></span></span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">75</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Husets pickles, oliver & rostade nötter.' : 'House pickles, assorted olives & roasted nuts.'}</div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'POPCORN MED HUMLE' : 'HOP POPCORN'}{' '}<span className="v-tags"><span className="v-tag vg">VG</span></span></span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">55</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Färskpoppat med torkad humle & smör.' : 'Freshly popped and seasoned with dried hops & melted butter.'}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* OSTRON & DESSERT side by side */}
+            <div className="v-grid" style={{ marginTop: '8px' }}>
+              <div className="v-section" style={{ gridColumn: '1 / 2' }}>
+                <h2>{lang === 'sv' ? 'OSTRON & BUBBEL' : 'OYSTERS & BUBBLES'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? '4 ST FÄRSKA OSTRON' : '4 FRESH OYSTERS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">110</span>
+                  </div>
+                  <div className="v-dish-desc">{lang === 'sv' ? 'Med citron, mignonette & tabasco.' : 'Served on ice with lemon, mignonette & tabasco.'}</div>
+                  <div className="v-pairing">{lang === 'sv' ? 'Bubbel eller Husets Pilsner' : 'Sparkling wine or House Pilsner'}</div>
+                </div>
+
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'BUBBEL — GLAS' : 'SPARKLING WINE — GLASS'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">99</span>
+                  </div>
+                </div>
+                <div className="v-dish">
+                  <div className="v-dish-head">
+                    <span className="v-dish-name">{lang === 'sv' ? 'BUBBEL — FLASKA' : 'SPARKLING WINE — BOTTLE'}</span>
+                    <span className="v-dots"></span>
+                    <span className="v-price">495</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="v-section" style={{ gridColumn: '2 / 4' }}>
+                <h2>{lang === 'sv' ? 'DESSERT' : 'DESSERTS'}</h2>
+                <div className="v-section-ornament">· · ·</div>
+
+                <div className="v-dessert-grid">
+                  <div className="v-dish">
+                    <div className="v-dish-head">
+                      <span className="v-dish-name">{lang === 'sv' ? 'CRÈME BRÛLÉE' : 'CRÈME BRÛLÉE'}</span>
+                      <span className="v-dots"></span>
+                      <span className="v-price">115</span>
+                    </div>
+                    <div className="v-dish-desc">{lang === 'sv' ? 'Med hallonsorbet.' : 'Served with raspberry sorbet.'}</div>
+                  </div>
+
+                  <div className="v-dish">
+                    <div className="v-dish-head">
+                      <span className="v-dish-name">{lang === 'sv' ? 'MANU\'S KLADDKAKA' : 'MANU\'S FUDGE CAKE'}</span>
+                      <span className="v-dots"></span>
+                      <span className="v-price">115</span>
+                    </div>
+                    <div className="v-dish-desc">{lang === 'sv' ? 'Med grädde, glass & saltkolasås.' : 'With whipped cream, ice cream & salted caramel sauce.'}</div>
+                    <div className="v-pairing">{lang === 'sv' ? 'Husets Hamnstout' : 'House Harbor Stout'}</div>
+                  </div>
+
+                  <div className="v-dish">
+                    <div className="v-dish-head">
+                      <span className="v-dish-name">{lang === 'sv' ? 'HOVMÄSTARDESSERT' : 'MAÎTRE D\' DESSERT'}</span>
+                      <span className="v-dots"></span>
+                      <span className="v-price">115</span>
+                    </div>
+                    <div className="v-dish-desc">{lang === 'sv' ? 'Glass, grädde, maräng & chokladsås.' : 'Ice cream, whipped cream, crispy meringue & chocolate sauce.'}</div>
+                  </div>
+
+                  <div className="v-dish">
+                    <div className="v-dish-head">
+                      <span className="v-dish-name">{lang === 'sv' ? 'OST & PORTVIN' : 'CHEESE & PORT WINE'}</span>
+                      <span className="v-dots"></span>
+                      <span className="v-price">145</span>
+                    </div>
+                    <div className="v-dish-desc">{lang === 'sv' ? 'Tre svenska ostar, fikonmarmelad & ett glas portvin.' : 'Three Swedish cheeses, fig marmalade & a glass of port wine.'}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <footer className="v-footer">
+              <div className="v-key">
+                <span><span className="v-tag v">V</span> {lang === 'sv' ? 'Vegetariskt' : 'Vegetarian'}</span>
+                <span><span className="v-tag vg">VG</span> {lang === 'sv' ? 'Veganskt' : 'Vegan'}</span>
+                <span><span className="v-tag gf">GF</span> {lang === 'sv' ? 'Glutenfritt' : 'Gluten Free'}</span>
+                <span>◆ {lang === 'sv' ? 'Ölrekommendation från brygghuset' : 'Beer recommendation from the brewhouse'}</span>
+              </div>
+              <p className="v-tagline">
+                {lang === 'sv' 
+                  ? 'Vi brygger vårt eget öl i källaren under puben — fråga gärna personalen om dagens fat och en provning av husets fyra signaturer.' 
+                  : 'We brew our own beer in the cellar under the pub — feel free to ask our staff about today\'s drafts and a tasting of our four signatures.'}
+              </p>
+              <div className="v-signature">
+                {lang === 'sv' 
+                  ? 'PORT ARTHUR · GÖTEBORG · SEDAN 1918' 
+                  : 'PORT ARTHUR · GOTHENBURG · SINCE 1918'}
+              </div>
+            </footer>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
