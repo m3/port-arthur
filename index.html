@@ -26,6 +26,75 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://flagcdn.com/w20/se.png" />
+
+    <!-- Structured Local Business Schema for Search Engines (Local SEO) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BarOrPub",
+        "@id": "https://portarthur.runthetable.app/#restaurant",
+        "name": "Port Arthur Pub & Brewhouse",
+        "image": [
+          "https://portarthur.runthetable.app/assets/exterior.webp",
+          "https://portarthur.runthetable.app/assets/pour.webp",
+          "https://portarthur.runthetable.app/assets/cheers.webp"
+        ],
+        "url": "https://portarthur.runthetable.app/",
+        "telephone": "+46317790705",
+        "priceRange": "$$",
+        "menu": "https://portarthur.runthetable.app/#menu",
+        "servesCuisine": [
+          "Swedish Pub Classics",
+          "Husmanskost",
+          "Craft Beer"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Gamla Ceresgatan 3",
+          "addressLocality": "Göteborg",
+          "postalCode": "417 58",
+          "addressCountry": "SE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 57.708893,
+          "longitude": 11.936666
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday"],
+            "opens": "15:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday"],
+            "opens": "15:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "15:00",
+            "closes": "01:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "13:00",
+            "closes": "01:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "13:00",
+            "closes": "22:00"
+          }
+        ],
+        "acceptsReservations": "True"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
