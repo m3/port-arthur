@@ -548,12 +548,12 @@ export default function App() {
               <img 
                 src="/assets/logo.webp" 
                 alt="Port Arthur Logo" 
-                style={{ height: '54px', filter: 'invert(1) brightness(1.2)', width: 'auto' }}
+                className="footer-logo-img"
                 loading="lazy"
                 decoding="async"
               />
               <div>
-                <h3 style={{ fontSize: '1.4rem', margin: 0, lineScale: 1.1 }}>Port Arthur</h3>
+                <h3 style={{ fontSize: '1.4rem', margin: 0, lineHeight: '1.1' }}>Port Arthur</h3>
                 <span style={{ fontSize: '0.75rem', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--accent-gold)' }}>Pub & Brewhouse</span>
               </div>
             </div>

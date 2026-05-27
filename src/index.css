@@ -27,6 +27,7 @@
   --scroll-thumb: #23160e;
   --scrolled-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   --board-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  --logo-filter: invert(1) brightness(1.2);
 
   /* Fonts */
   --font-serif: 'IBM Plex Serif', Georgia, serif;
@@ -73,6 +74,7 @@
   --scroll-thumb: #dcd3c4;
   --scrolled-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   --board-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  --logo-filter: sepia(10%) contrast(1.1) brightness(0.15);
 
   color-scheme: light;
 }
@@ -147,7 +149,15 @@ body {
 .header-logo-img {
   height: var(--logo-height);
   width: auto;
-  transition: height 0.3s ease;
+  filter: var(--logo-filter);
+  transition: all 0.3s ease;
+}
+
+.footer-logo-img {
+  height: 54px;
+  width: auto;
+  filter: var(--logo-filter);
+  transition: all 0.3s ease;
 }
 
 .logo-link {
@@ -898,19 +908,21 @@ body {
 
 .footer-links ul {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
 }
 
 .footer-links a {
   color: var(--text-dimmed);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .footer-links a:hover {
   color: var(--accent-gold);
+  padding-left: 4px; /* Premium micro-interaction slide */
 }
 
 .footer-socials {
