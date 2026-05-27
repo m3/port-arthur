@@ -31,7 +31,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HETZNER_VPS_IP }}
           REMOTE_USER: ${{ secrets.HETZNER_VPS_USER }}
           # Port mapping: allows fallback to standard 22, or reads a custom port secret
-          SSH_PORT: ${{ secrets.HETZNER_SSH_PORT || '22' }}
+          REMOTE_PORT: ${{ secrets.HETZNER_SSH_PORT || '22' }}
           SOURCE: "dist/"
           TARGET: ${{ secrets.HETZNER_DEPLOY_PATH }}
           ARGS: "-rlgoDzvO --delete"
