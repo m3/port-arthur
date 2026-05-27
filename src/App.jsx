@@ -228,7 +228,6 @@ export default function App() {
               src="/assets/logo.webp" 
               alt="Port Arthur Logo" 
               className="header-logo-img"
-              style={{ filter: 'invert(1) brightness(1.2)', width: 'auto' }} 
               decoding="async"
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -276,7 +275,7 @@ export default function App() {
           <img 
             src="/assets/logo.webp" 
             alt="Port Arthur Seamen's Pub Emblem" 
-            style={{ width: '120px', height: 'auto', marginBottom: '24px', filter: 'invert(1) brightness(1.2)' }}
+            className="hero-logo-img"
             decoding="async"
           />
           <span className="hero-tagline">{t.tagline}</span>
