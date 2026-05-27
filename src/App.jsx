@@ -228,7 +228,7 @@ export default function App() {
               src="/assets/logo.webp" 
               alt="Port Arthur Logo" 
               className="header-logo-img"
-              style={{ height: '48px', filter: 'invert(1) brightness(1.2)', width: 'auto' }} 
+              style={{ filter: 'invert(1) brightness(1.2)', width: 'auto' }} 
               decoding="async"
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -255,13 +255,13 @@ export default function App() {
                 alt={lang === 'sv' ? 'English' : 'Svenska'}
                 className="flag-icon"
               />
-              {lang === 'sv' ? 'English' : 'Svenska'}
+              <span className="toggle-text">{lang === 'sv' ? 'English' : 'Svenska'}</span>
             </button>
 
             {/* Dynamic theme switcher button */}
             <button className="lang-toggle" onClick={toggleTheme} aria-label="Toggle theme" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               {theme === 'dark' ? '☀️' : '🌙'}
-              <span style={{ fontSize: '0.85rem' }}>{theme === 'dark' ? (lang === 'sv' ? 'Ljust' : 'Light') : (lang === 'sv' ? 'Mörkt' : 'Dark')}</span>
+              <span className="toggle-text" style={{ fontSize: '0.85rem' }}>{theme === 'dark' ? (lang === 'sv' ? 'Ljust' : 'Light') : (lang === 'sv' ? 'Mörkt' : 'Dark')}</span>
             </button>
 
             <a href="#book" className="btn-gold">{t.bookBtn}</a>

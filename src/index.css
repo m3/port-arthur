@@ -35,6 +35,7 @@
   /* Layout Variables */
   --max-width: 1200px;
   --header-height: 80px;
+  --logo-height: 48px;
 
   /* Color Schemes / Utilities */
   color-scheme: dark;
@@ -141,6 +142,12 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+}
+
+.header-logo-img {
+  height: var(--logo-height);
+  width: auto;
+  transition: height 0.3s ease;
 }
 
 .logo-link {
@@ -1034,6 +1041,29 @@ body {
   .site-header {
     height: 70px;
   }
+  .site-header .btn-gold {
+    display: none; /* Hide header booking CTA since we have a sticky bottom action bar on mobile */
+  }
+  .toggle-text {
+    display: none; /* Hide button text to make theme/language switchers ultra-compact */
+  }
+  .logo-title {
+    font-size: 1.15rem;
+  }
+  .logo-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+  .header-actions {
+    gap: 8px; /* Tighter spacing on mobile */
+  }
+  .lang-toggle {
+    padding: 6px 10px; /* Slimmer button padding */
+  }
+  :root {
+    --logo-height: 36px; /* Decrease logo image height dynamically */
+  }
+
   .nav-links {
     display: none; /* Hide default nav items for simplified mobile navigation */
   }
