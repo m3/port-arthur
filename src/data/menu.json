@@ -1,0 +1,147 @@
+{
+  "categories": [
+    {
+      "id": "starters",
+      "name": {
+        "en": "Starters & Small Plates",
+        "sv": "Förrätter & Smårätter"
+      },
+      "items": [
+        {
+          "id": "charcuterie",
+          "name": {
+            "en": "Cheese & Charcuterie Tray",
+            "sv": "Ost- & Charkbricka"
+          },
+          "price": 189,
+          "description": {
+            "en": "Chef's selection of premium local cheeses and cured meats, served with olives, fig jam and toasted baguette.",
+            "sv": "Kockens urval av fina ostar och charkuterier, serveras med oliver, fikonmarmelad och rostat bröd."
+          }
+        },
+        {
+          "id": "scampi",
+          "name": {
+            "en": "Garlic & Chilli Scampi",
+            "sv": "Vitlöks- & Chilimarinerad Scampi"
+          },
+          "price": 139,
+          "description": {
+            "en": "Prawns braised in white wine, fresh red chilli, and roasted garlic. Served bubbling hot with buttered baguette.",
+            "sv": "Scampi sauterad i vitt vin, färsk röd chili och rostad vitlök. Serveras rykande varm med smörstekt baguette."
+          }
+        },
+        {
+          "id": "sos",
+          "name": {
+            "en": "S.O.S - Sill, Ost & Smör",
+            "sv": "S.O.S - Sill, Ost & Smör"
+          },
+          "price": 145,
+          "description": {
+            "en": "Three kinds of premium Swedish herring, aged Västerbotten cheese, fresh potatoes, butter, chives, and crispbread.",
+            "sv": "Tre sorters sill, lagrad Västerbottenost, färskpotatis, brynt smör, gräslök och knäckebröd."
+          }
+        },
+        {
+          "id": "skagen",
+          "name": {
+            "en": "Toast Skagen (Half / Whole)",
+            "sv": "Toast Skagen (Halv / Hel)"
+          },
+          "price": {
+            "half": 139,
+            "full": 209
+          },
+          "description": {
+            "en": "Creamy hand-peeled shrimp salad with fresh dill, mayonnaise, and grated horseradish. Served on buttered brioche toast.",
+            "sv": "Krämig röra på handskalade räkor, färsk dill, majonnäs och pepparrot. Serveras på smörstekt briochebröd."
+          }
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": {
+        "en": "Mains & Pub Classics",
+        "sv": "Varmrätter & Pubklassiker"
+      },
+      "items": [
+        {
+          "id": "plankstek",
+          "name": {
+            "en": "Plankstek on Beef Tenderloin",
+            "sv": "Plankstek på Oxfilé"
+          },
+          "price": 355,
+          "classic": true,
+          "description": {
+            "en": "Premium grilled beef tenderloin served on a traditional oak plank with piped duchesse potatoes, crisp bacon-wrapped green beans, grilled tomato, pepper sauce, and home-made béarnaise.",
+            "sv": "Premium grillad oxfilé serverad på traditionell ekplanka med gratinerat duchessemos, knaperstekt baconlindad haricots verts, bakad tomat, pepparsås och krämig bearnaisesås."
+          }
+        },
+        {
+          "id": "lamb",
+          "name": {
+            "en": "Lamb Roast Beef",
+            "sv": "Lammrostbiff"
+          },
+          "price": 265,
+          "classic": true,
+          "description": {
+            "en": "Tender roast beef of lamb served with a rich potato gratin, garlic-sauteed forest mushrooms, green beans, and a velvety red wine reduction.",
+            "sv": "Mör lammrostbiff serverad med krämig potatisgratäng, vitlöksstekt skogssvamp, haricots verts och fyllig rödvinssky."
+          }
+        },
+        {
+          "id": "schnitzel",
+          "name": {
+            "en": "Classic Wiener Schnitzel",
+            "sv": "Klassisk Wienerschnitzel"
+          },
+          "price": 229,
+          "description": {
+            "en": "Crispy golden veal schnitzel served with roasted fingerling potatoes, caper and anchovy butter, green peas, and red wine reduction.",
+            "sv": "Frasig panerad kalvschnitzel serverad med ugnsrostad potatis, kaprissmör med ansjovis, gröna ärtor och mustig rödvinssky."
+          }
+        },
+        {
+          "id": "burger",
+          "name": {
+            "en": "Highland Pub Burger",
+            "sv": "Highland Pubburgare"
+          },
+          "price": 209,
+          "description": {
+            "en": "200g prime beef patty, spicy chilli mayo, crisp lettuce, fresh tomato, pickled silver onion, smoky bacon, cheddar cheese, and house BBQ sauce. Served with golden fries.",
+            "sv": "200g högrevsburgare, chipotlemajonnäs, krispig sallad, tomat, picklad silverlök, rökt bacon, cheddarost och fyllig BBQ-sås. Serveras med pommes frites."
+          }
+        },
+        {
+          "id": "meatballs",
+          "name": {
+            "en": "Traditional Veal Meatballs",
+            "sv": "Klassiska Kalvköttbullar"
+          },
+          "price": 209,
+          "description": {
+            "en": "Home-made double-ground veal meatballs served with silky potato purée, a rich cream gravy, pickled cucumber, and wild lingonberries.",
+            "sv": "Hemgjorda köttbullar på finmalen kalvfärs, serveras med fluffigt potatismos, gräddsås, inlagd pressgurka och rårörda lingon."
+          }
+        },
+        {
+          "id": "pasta",
+          "name": {
+            "en": "Creamy Pepper Pasta",
+            "sv": "Krämig Pepparpasta"
+          },
+          "price": 219,
+          "description": {
+            "en": "Tagliatelle tossed with pan-seared tenderloin strips, wild mushrooms, and a rich, creamy four-pepper sauce. Topped with aged Parmesan.",
+            "sv": "Tagliatelle med strimlad oxfilé, skogssvamp och en krämig pepparsås gjord på fyra sorters peppar. Toppas med hyvlad Parmesan."
+          }
+        }
+      ]
+    }
+  ]
+}
