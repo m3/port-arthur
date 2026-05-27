@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
   /* Premium Palette */
   --bg-main: #0c0805;
@@ -252,7 +250,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: var(--header-height);
-  background-image: linear-gradient(rgba(12, 8, 5, 0.7), rgba(12, 8, 5, 0.85)), url('/assets/exterior.jpg');
+  background-image: linear-gradient(rgba(12, 8, 5, 0.7), rgba(12, 8, 5, 0.85)), url('/assets/exterior.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -666,7 +664,7 @@ body {
 
 /* Event / Venue subscription section */
 .venue-cta {
-  background: linear-gradient(rgba(12, 8, 5, 0.75), rgba(12, 8, 5, 0.9)), url('/assets/exterior.jpg');
+  background: linear-gradient(rgba(12, 8, 5, 0.75), rgba(12, 8, 5, 0.9)), url('/assets/exterior.webp');
   background-size: cover;
   background-position: center;
   padding: 120px 0;

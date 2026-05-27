@@ -209,10 +209,11 @@ export default function App() {
           <a href="#home" className="logo-link" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
             {/* White-inverted real vector logo */}
             <img 
-              src="/assets/logo.png" 
+              src="/assets/logo.webp" 
               alt="Port Arthur Logo" 
               className="header-logo-img"
               style={{ height: '48px', filter: 'invert(1) brightness(1.2)', width: 'auto' }} 
+              decoding="async"
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span className="logo-title" style={{ fontSize: '1.4rem' }}>Port Arthur</span>
@@ -251,9 +252,10 @@ export default function App() {
         <div className="container hero-content">
           {/* Logo overlay on Hero */}
           <img 
-            src="/assets/logo.png" 
+            src="/assets/logo.webp" 
             alt="Port Arthur Seamen's Pub Emblem" 
             style={{ width: '120px', height: 'auto', marginBottom: '24px', filter: 'invert(1) brightness(1.2)' }}
+            decoding="async"
           />
           <span className="hero-tagline">{t.tagline}</span>
           <h1 className="hero-title">{t.title}</h1>
@@ -303,9 +305,11 @@ export default function App() {
           <div className="about-image-container">
             <span className="about-badge">{t.historyBadge}</span>
             <img 
-              src="/assets/pour.jpg" 
+              src="/assets/pour.webp" 
               alt="Fresh draft beer being poured at Port Arthur" 
               className="about-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -333,9 +337,11 @@ export default function App() {
           <div className="about-image-container">
             <span className="about-badge" style={{ borderColor: 'var(--accent-gold)' }}>Home Brewery</span>
             <img 
-              src="/assets/cheers.jpg" 
+              src="/assets/cheers.webp" 
               alt="Clinking Port Arthur craft beers Finest Red Light Pale Ale" 
               className="about-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -415,6 +421,7 @@ export default function App() {
                 src={getBookingUrl()} 
                 title="Bordsbokaren Reservation System" 
                 className="booking-iframe"
+                loading="lazy"
               ></iframe>
             </div>
 
@@ -517,9 +524,11 @@ export default function App() {
           <div className="footer-brand" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img 
-                src="/assets/logo.png" 
+                src="/assets/logo.webp" 
                 alt="Port Arthur Logo" 
                 style={{ height: '54px', filter: 'invert(1) brightness(1.2)', width: 'auto' }}
+                loading="lazy"
+                decoding="async"
               />
               <div>
                 <h3 style={{ fontSize: '1.4rem', margin: 0, lineScale: 1.1 }}>Port Arthur</h3>
