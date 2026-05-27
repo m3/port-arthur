@@ -122,6 +122,9 @@ const openingHours = {
 
 export default function App() {
   const [lang, setLang] = useState('sv'); 
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
   const [scrolled, setScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState('mains');
   const [isOpen, setIsOpen] = useState(false);
@@ -129,6 +132,11 @@ export default function App() {
   const [statusMessage, setStatusMessage] = useState('');
 
   const t = translations[lang];
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -196,6 +204,10 @@ export default function App() {
     setLang(prev => (prev === 'sv' ? 'en' : 'sv'));
   };
 
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   const getBookingUrl = () => {
     const languageCode = lang === 'en' ? 'en-US' : 'se-SE';
     return `https://3.bordsbokaren.se/inc/get-maltidsvaljaren-kalender.php?datum=2026-05-27&forvalt_datum=&sittningsserie_id=51&i=3000&k=g2I5t6an&l=${languageCode}`;
@@ -240,6 +252,12 @@ export default function App() {
                 className="flag-icon"
               />
               {lang === 'sv' ? 'English' : 'Svenska'}
+            </button>
+
+            {/* Dynamic theme switcher button */}
+            <button className="lang-toggle" onClick={toggleTheme} aria-label="Toggle theme" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {theme === 'dark' ? '☀️' : '🌙'}
+              <span style={{ fontSize: '0.85rem' }}>{theme === 'dark' ? (lang === 'sv' ? 'Ljust' : 'Light') : (lang === 'sv' ? 'Mörkt' : 'Dark')}</span>
             </button>
 
             <a href="#book" className="btn-gold">{t.bookBtn}</a>

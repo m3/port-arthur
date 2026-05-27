@@ -1,5 +1,5 @@
 :root {
-  /* Premium Palette */
+  /* Premium Dark Theme variables */
   --bg-main: #0c0805;
   --bg-card: rgba(26, 17, 11, 0.7);
   --bg-card-hover: rgba(38, 25, 16, 0.85);
@@ -15,6 +15,19 @@
   --success: #00d084;
   --success-glow: rgba(0, 208, 132, 0.2);
 
+  /* Layout/Theme variables */
+  --header-bg: rgba(12, 8, 5, 0.85);
+  --header-bg-scrolled: rgba(12, 8, 5, 0.95);
+  --hero-overlay: linear-gradient(rgba(12, 8, 5, 0.7), rgba(12, 8, 5, 0.85));
+  --venue-overlay: linear-gradient(rgba(12, 8, 5, 0.75), rgba(12, 8, 5, 0.9));
+  --bg-dark-section: #110b07;
+  --classic-gradient: linear-gradient(135deg, rgba(32, 21, 13, 0.9) 0%, rgba(20, 13, 8, 0.9) 100%);
+  --map-filter: grayscale(1) invert(0.9) contrast(1.2);
+  --bg-footer: #080503;
+  --scroll-thumb: #23160e;
+  --scrolled-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --board-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+
   /* Fonts */
   --font-serif: 'IBM Plex Serif', Georgia, serif;
   --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
@@ -29,6 +42,38 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="light"] {
+  /* Premium Light Theme Variables (Parchment & Brass) */
+  --bg-main: #f9f6f0; /* Soft warm cream/parchment background */
+  --bg-card: rgba(255, 255, 255, 0.8); /* Soft paper white glass */
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --border-gold: rgba(184, 130, 53, 0.25); /* Warm brass border */
+  --border-gold-hover: rgba(184, 130, 53, 0.5);
+  --accent-gold: #b88235; /* Darker warm brass for perfect contrast on light bg */
+  --accent-gold-rgb: 184, 130, 53;
+  --accent-gold-glow: #dca452;
+  --text-light: #2a1f17; /* Deep mahogany for body text */
+  --text-dimmed: #68574a; /* Medium warm brown for descriptive text */
+  --text-dark: #f9f5f0;
+  --danger: #b31b1b;
+  --success: #00875a;
+  --success-glow: rgba(0, 135, 90, 0.08);
+
+  --header-bg: rgba(249, 246, 240, 0.85);
+  --header-bg-scrolled: rgba(249, 246, 240, 0.95);
+  --hero-overlay: linear-gradient(rgba(249, 246, 240, 0.6), rgba(249, 246, 240, 0.85));
+  --venue-overlay: linear-gradient(rgba(249, 246, 240, 0.65), rgba(249, 246, 240, 0.85));
+  --bg-dark-section: #f2ebe0; /* Soft warm beige for dark sections */
+  --classic-gradient: linear-gradient(135deg, #fffcf5 0%, #f6edd9 100%);
+  --map-filter: none; /* Show full beautiful maps in light mode */
+  --bg-footer: #ede6da;
+  --scroll-thumb: #dcd3c4;
+  --scrolled-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --board-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+
+  color-scheme: light;
 }
 
 * {
@@ -55,7 +100,7 @@ body {
   background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: #23160e;
+  background: var(--scroll-thumb);
   border: 2px solid var(--bg-main);
   border-radius: 5px;
 }
@@ -78,7 +123,7 @@ body {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background: rgba(12, 8, 5, 0.85);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-gold);
   z-index: 1000;
@@ -87,8 +132,8 @@ body {
 
 .site-header.scrolled {
   height: 70px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: rgba(12, 8, 5, 0.95);
+  box-shadow: var(--scrolled-shadow);
+  background: var(--header-bg-scrolled);
 }
 
 .header-container {
@@ -250,7 +295,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: var(--header-height);
-  background-image: linear-gradient(rgba(12, 8, 5, 0.7), rgba(12, 8, 5, 0.85)), url('/assets/exterior.webp');
+  background-image: var(--hero-overlay), url('/assets/exterior.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -321,12 +366,12 @@ body {
 }
 
 .info-board {
-  background: rgba(22, 15, 10, 0.8);
+  background: var(--bg-card);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-gold);
   border-radius: 8px;
   padding: 30px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--board-shadow);
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
   gap: 32px;
@@ -380,7 +425,7 @@ body {
 }
 
 .section-dark {
-  background: #110b07;
+  background: var(--bg-dark-section);
 }
 
 .section-header {
@@ -566,7 +611,7 @@ body {
 /* High-Margin Signature Dish Styling: Glowing visual anchors */
 .menu-item.classic-item {
   border: 1.5px solid var(--accent-gold);
-  background: linear-gradient(135deg, rgba(32, 21, 13, 0.9) 0%, rgba(20, 13, 8, 0.9) 100%);
+  background: var(--classic-gradient);
   box-shadow: 0 5px 20px rgba(220, 164, 82, 0.1);
 }
 
@@ -664,7 +709,7 @@ body {
 
 /* Event / Venue subscription section */
 .venue-cta {
-  background: linear-gradient(rgba(12, 8, 5, 0.75), rgba(12, 8, 5, 0.9)), url('/assets/exterior.webp');
+  background: var(--venue-overlay), url('/assets/exterior.webp');
   background-size: cover;
   background-position: center;
   padding: 120px 0;
@@ -804,12 +849,11 @@ body {
   height: 100%;
   min-height: 350px;
   border: none;
-  filter: grayscale(1) invert(0.9) contrast(1.2); /* Beautiful dark maps style */
+  filter: var(--map-filter);
 }
 
-/* Footer */
 .site-footer {
-  background: #080503;
+  background: var(--bg-footer);
   border-top: 1px solid var(--border-gold);
   padding: 60px 0 100px; /* Large bottom padding for mobile bar */
   color: var(--text-dimmed);
@@ -892,7 +936,7 @@ body {
   left: 0;
   width: 100%;
   height: 64px;
-  background: rgba(12, 8, 5, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(16px);
   border-top: 1.5px solid var(--border-gold);
   z-index: 999;
@@ -912,7 +956,7 @@ body {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   gap: 4px;
-  border-right: 1px solid rgba(220, 164, 82, 0.1);
+  border-right: 1px solid var(--border-gold);
   transition: background-color 0.2s ease;
 }
 
