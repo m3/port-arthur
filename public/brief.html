@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Arthur — Digital Lift Partnership Brief</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --text: #e4e4ef;
+    --text-dim: #8888a0;
+    --accent: #6c5ce7;
+    --accent2: #00cec9;
+    --accent3: #fd79a8;
+    --green: #00b894;
+    --yellow: #fdcb6e;
+    --red: #e17055;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  }
+  .header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+  .header .meta {
+    display: flex; gap: 1.5rem; justify-content: center;
+    margin-top: 1.2rem; flex-wrap: wrap;
+  }
+  .meta-item {
+    background: var(--surface2);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .meta-item strong { color: var(--text); }
+
+  /* Council Banner */
+  .council-banner {
+    background: linear-gradient(135deg, rgba(108,92,231,0.15) 0%, rgba(0,206,201,0.15) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .council-banner h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .council-members {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .council-member {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.78rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .council-member .role {
+    color: var(--accent2);
+    font-weight: 600;
+  }
+  .council-member .verdict {
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .verdict.go { background: rgba(0,184,148,0.2); color: var(--green); }
+  .verdict.caution { background: rgba(253,203,110,0.2); color: var(--yellow); }
+  .verdict.no-go { background: rgba(225,112,85,0.2); color: var(--red); }
+
+  /* Sections */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section h2 .icon { font-size: 1.3rem; }
+  .section h3 {
+    font-size: 0.95rem;
+    color: var(--accent2);
+    margin: 1.2rem 0 0.6rem;
+  }
+
+  /* Cards Grid */
+  .cards-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .cards-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+  .card h4 {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .card p, .card li {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+  }
+  .card ul { list-style: none; padding: 0; }
+  .card li { padding: 0.2rem 0; }
+  .card li::before { content: '→ '; color: var(--accent2); }
+
+  /* Persona Box */
+  .persona {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  .persona-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .persona.marcus .persona-avatar { background: rgba(108,92,231,0.3); color: var(--accent); }
+  .persona.patrick .persona-avatar { background: rgba(0,206,201,0.3); color: var(--accent2); }
+  .persona-info h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .persona-info .label { font-size: 0.75rem; color: var(--text-dim); }
+  .persona-info p { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.3rem; }
+
+  /* Company Table */
+  .company-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+  .company-table th {
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    background: var(--surface2);
+    color: var(--accent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .company-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .company-table tr:last-child td { border-bottom: none; }
+  .company-table td strong { color: var(--text); }
+  .badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .badge.good { background: rgba(0,184,148,0.2); color: var(--green); }
+  .badge.warn { background: rgba(253,203,110,0.2); color: var(--yellow); }
+  .badge.bad { background: rgba(225,112,85,0.2); color: var(--red); }
+
+  /* Flow Diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+  }
+  .flow-step {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    min-width: 120px;
+    font-size: 0.78rem;
+  }
+  .flow-step .step-num {
+    display: inline-block;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 0.4rem;
+  }
+  .flow-step p { color: var(--text-dim); }
+  .flow-arrow {
+    color: var(--accent);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  /* Pros/Cons Table */
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .pros, .pros-cons .cons {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+  .pros { border: 1px solid rgba(0,184,148,0.3); }
+  .cons { border: 1px solid rgba(225,112,85,0.3); }
+  .pros h4 { color: var(--green); font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .cons h4 { color: var(--red); font-size: 0.85rem; margin-bottom: 0.6rem; }
+  .pros li, .cons li {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    padding: 0.2rem 0;
+    list-style: none;
+  }
+  .pros li::before { content: '✓ '; color: var(--green); }
+  .cons li::before { content: '✗ '; color: var(--red); }
+
+  /* Model Comparison */
+  .model-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+  }
+  .model-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .model-card.recommended {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(108,92,231,0.15);
+  }
+  .model-card .rec-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .model-card h4 { font-size: 0.85rem; margin-bottom: 0.4rem; }
+  .model-card .split {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent2);
+    margin: 0.5rem 0;
+  }
+  .model-card p { font-size: 0.75rem; color: var(--text-dim); }
+
+  /* Goals */
+  .goal-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .goal-item:last-child { border-bottom: none; }
+  .goal-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .goal-text h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+  .goal-text p { font-size: 0.8rem; color: var(--text-dim); }
+
+  /* Questions */
+  .question {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.6rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .question .q { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .question .why { font-size: 0.75rem; color: var(--text-dim); font-style: italic; }
+
+  /* Red Flags */
+  .red-flag {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    background: rgba(225,112,85,0.08);
+    border: 1px solid rgba(225,112,85,0.25);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .red-flag .icon { font-size: 1rem; flex-shrink: 0; }
+  .red-flag p { font-size: 0.82rem; color: var(--text-dim); }
+  .red-flag strong { color: var(--red); }
+
+  /* Checklist */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    display: flex; align-items: center; gap: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Council Verdict */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .verdict-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.2rem;
+  }
+  .verdict-card h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .verdict-card p { font-size: 0.8rem; color: var(--text-dim); }
+  .verdict-card .rating {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .cards-3 { grid-template-columns: 1fr; }
+    .cards-2 { grid-template-columns: 1fr; }
+    .model-cards { grid-template-columns: repeat(2, 1fr); }
+    .pros-cons { grid-template-columns: 1fr; }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🍺 Port Arthur — Digital Lift Partnership</h1>
+  <p class="subtitle">Meeting Brief & Cooperation Framework — Marcus Yüksel</p>
+  <div class="meta">
+    <span class="meta-item"><strong>Date:</strong> June 5, 2026</span>
+    <span class="meta-item"><strong>Contact:</strong> Marcus Yüksel (070-960 61 25)</span>
+    <span class="meta-item"><strong>Company:</strong> Restaurang Arthur AB, Partille</span>
+    <span class="meta-item"><strong>Est. 1918</strong></span>
+  </div>
+</div>
+
+<!-- COUNCIL REVIEW BANNER -->
+<div class="council-banner">
+  <h3>⚖️ Council Review — Pre-Meeting Assessment</h3>
+  <div class="council-members">
+    <div class="council-member">
+      <span class="role">Glenn (CEO/Strategy):</span>
+      <span class="verdict go">GO — Strong partnership potential</span>
+    </div>
+    <div class="council-member">
+      <span class="role">CFO Lens:</span>
+      <span class="verdict caution">CAUTION — Verify revenue, 0 SEK on paper</span>
+    </div>
+    <div class="council-member">
+      <span class="role">Tech Lead:</span>
+      <span class="verdict go">GO — Product exists, proven scope</span>
+    </div>
+    <div class="council-member">
+      <span class="role">Sales Lens:</span>
+      <span class="verdict caution">CAUTION — Marcus ≠ decision maker</span>
+    </div>
+    <div class="council-member">
+      <span class="role">Legal/Deal:</span>
+      <span class="verdict caution">CAUTION — Get Patrick involved early</span>
+    </div>
+  </div>
+</div>
+
+<!-- PEOPLE -->
+<div class="section">
+  <h2><span class="icon">👥</span> Key People</h2>
+
+  <div class="persona marcus">
+    <div class="persona-avatar">MY</div>
+    <div class="persona-info">
+      <h4>Marcus Yüksel — Born 1999 (26-27 yo)</h4>
+      <span class="label">Suppleant (Deputy Board Member), Restaurang Arthur AB</span>
+      <p>Young, connected, sees value in the Digital Lift tool. Wants to explore cooperation/reseller model. Has restaurant industry connections. Phone: 070-960 61 25.</p>
+    </div>
+  </div>
+
+  <div class="persona patrick">
+    <div class="persona-avatar">PY</div>
+    <div class="persona-info">
+      <h4>Patrick Yüksel — Born 1992 (33-34 yo) — Marcus's Brother</h4>
+      <span class="label">Ordförande (Chairman), Restaurang Arthur AB — 5 board positions</span>
+      <p>The operational leader of the Yüsel restaurant group. Controls 4 companies across the portfolio. Connected to Suzanne Gerges (co-director, 4 companies) and Karl Gustav Håkan Kjellström. Key decision-maker for any partnership — Marcus reports to him operationally.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NETWORK MAP -->
+<div class="section">
+  <h2><span class="icon">🕸️</span> Yüsel-Gerges Restaurant Network</h2>
+  <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:1rem;">
+    The Yüsel brothers and Suzanne Gerges co-direct a tight network of 4 restaurant companies. Karl Gustav Håkan Kjellström is a shared connection across all entities.
+  </p>
+  <table class="company-table">
+    <tr>
+      <th>Company</th>
+      <th>Patrick (Chairman)</th>
+      <th>Marcus (Deputy)</th>
+      <th>Suzanne (Deputy)</th>
+      <th>Revenue (2024)</th>
+      <th>Employees</th>
+      <th>Profit</th>
+    </tr>
+    <tr>
+      <td><strong>Restaurang Arthur AB</strong></td>
+      <td>Ordförande</td>
+      <td>Ledamot</td>
+      <td>Ledamot</td>
+      <td>0 SEK</td>
+      <td>0</td>
+      <td><span class="badge warn">Dormant?</span></td>
+    </tr>
+    <tr>
+      <td><strong>Porta Porta AB</strong></td>
+      <td>Ledamot</td>
+      <td>—</td>
+      <td>Suppleant</td>
+      <td>19,205 SEK</td>
+      <td>10</td>
+      <td><span class="badge good">Mycket bra</span></td>
+    </tr>
+    <tr>
+      <td><strong>Pizzeria Bella Mia AB</strong></td>
+      <td>Ledamot</td>
+      <td>—</td>
+      <td>Suppleant</td>
+      <td>5,581 SEK</td>
+      <td>5</td>
+      <td><span class="badge bad">Inte tillfredsst.</span></td>
+    </tr>
+    <tr>
+      <td><strong>Kockens Hjärta i Gamlestan AB</strong></td>
+      <td>Ledamot</td>
+      <td>—</td>
+      <td>Suppleant</td>
+      <td>4,532 SEK</td>
+      <td>4</td>
+      <td><span class="badge bad">Inte tillfredsst.</span></td>
+    </tr>
+  </table>
+
+  <h3>Key Network Connections</h3>
+  <div class="cards-3">
+    <div class="card">
+      <h4>Patrick Yüksel</h4>
+      <ul>
+        <li>5 board positions</li>
+        <li>Chairman of Restaurang Arthur AB</li>
+        <li>Ledamot in 3 other restaurants</li>
+        <li>Connected to Suzanne Gerges (4 shared companies)</li>
+        <li>Connected to Karl Gustav Håkan Kjellström</li>
+        <li>Connected to Marcus Yüksel (brother)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Suzanne Gerges (b. 1971)</h4>
+      <ul>
+        <li>4 board positions</li>
+        <li>Ledamot in Restaurang Arthur AB</li>
+        <li>Suppleant in 3 other restaurants</li>
+        <li>Connected to Patrick Yüksel (4 shared)</li>
+        <li>Connected to Karl Gustav Håkan Kjellström</li>
+        <li>Connected to Marcus Yüksel</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Karl Gustav Håkan Kjellström</h4>
+      <ul>
+        <li>Shared connection across all 4 companies</li>
+        <li>Connected to Patrick, Suzanne, and Marcus</li>
+        <li>Role unclear — likely advisor/investor</li>
+        <li>All 3 Yüsel-Gerges directors link to him</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WE BUILT — PORT ARTHUR SHOWCASE -->
+<div class="section">
+  <h2><span class="icon">🔧</span> What We Built — Port Arthur Digital Lift</h2>
+  <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:1.2rem;">
+    This isn't a pitch — it's a live product. We built Port Arthur's entire digital presence from scratch in May 2026. Here's what exists today:
+  </p>
+
+  <!-- Feature Grid -->
+  <div class="cards-3" style="margin-bottom:1.5rem;">
+    <div class="card">
+      <h4>🏠 Full Website — React/Vite SPA</h4>
+      <ul>
+        <li>Mobile-first responsive design</li>
+        <li>Dark / Light theme toggle (persisted)</li>
+        <li>Swedish / English language switch (SV↔EN)</li>
+        <li>SEO-optimized with LocalBusiness schema</li>
+        <li>Custom domain: portarthur.se</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🍽️ JSON-Driven Menu System</h4>
+      <ul>
+        <li>Full menu with categories (Starters, Mains)</li>
+        <li>Bilingual dish descriptions with sensory language</li>
+        <li>"House Classic" badges on high-margin dishes</li>
+        <li>Half/whole portion pricing (e.g. Toast Skagen)</li>
+        <li>Menu updates via git deploy — no CMS needed</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📅 Integrated Booking System</h4>
+      <ul>
+        <li>Embedded Bordsbokaren reservation widget</li>
+        <li>Language-aware booking flow (EN/SV)</li>
+        <li>Real-time "Open Now" status indicator</li>
+        <li>Click-to-call phone integration</li>
+        <li>Google Maps deep-link navigation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cards-3" style="margin-bottom:1.5rem;">
+    <div class="card">
+      <h4>🍺 Brewery Section</h4>
+      <ul>
+        <li>Dedicated "Port Arthur Home Brewery" page</li>
+        <li>Signature beer showcase (Finest Red Light Pale Ale)</li>
+        <li>Storytelling: tradition meets innovation</li>
+        <li>Professional photography (beer pour, cheers)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🏛️ Heritage & Storytelling</h4>
+      <ul>
+        <li>"Established 1918" brand narrative</li>
+        <li>History section with authentic pub photography</li>
+        <li>Hamnarbetarhuset (Dockworker's House) venue page</li>
+        <li>Event booking CTA for corporate/private events</li>
+        <li>Up to 90 seated guests capacity</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📊 SEO & Local Discovery</h4>
+      <ul>
+        <li>LocalBusiness schema (BarOrPub type)</li>
+        <li>Geo-coordinates for Google Maps</li>
+        <li>Opening hours structured data</li>
+        <li>Keywords: sjömanskrog, Lindholmen, Göteborg</li>
+        <li>Open Graph meta for social sharing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Live Preview Images -->
+  <h3>Live Site Preview</h3>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-top:0.8rem;">
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+      <img src="/assets/brief-hero.png" alt="Port Arthur Hero" style="width:100%; height:160px; object-fit:cover;">
+      <div style="padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-dim);">Hero section with pub exterior</div>
+    </div>
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+      <img src="/assets/brief-pour.webp" alt="Beer Pour" style="width:100%; height:160px; object-fit:cover;">
+      <div style="padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-dim);">Brewhouse section with craft beer</div>
+    </div>
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:10px; overflow:hidden;">
+      <img src="/assets/brief-cheers.webp" alt="Cheers" style="width:100%; height:160px; object-fit:cover;">
+      <div style="padding:0.6rem 0.8rem; font-size:0.75rem; color:var(--text-dim);">Heritage section with real pub atmosphere</div>
+    </div>
+  </div>
+
+  <!-- Menu Preview -->
+  <h3 style="margin-top:1.5rem;">Menu Preview (Sample Dishes)</h3>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0.6rem; margin-top:0.8rem;">
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:0.8rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.85rem; font-weight:600;">Plankstek on Beef Tenderloin</span>
+        <span style="font-size:0.8rem; color:var(--accent2);">360 SEK</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.3rem;">Premium grilled beef tenderloin on oak plank with duchesse potatoes, bacon-wrapped beans, béarnaise. <span style="color:var(--accent); font-size:0.7rem;">★ House Classic</span></p>
+    </div>
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:0.8rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.85rem; font-weight:600;">Slow Braised Beef in Own Beer</span>
+        <span style="font-size:0.8rem; color:var(--accent2);">295 SEK</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.3rem;">Fall-apart beef in house-brewed dark ale with root vegetables, mash, beer gravy. <span style="color:var(--accent); font-size:0.7rem;">★ House Classic</span></p>
+    </div>
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:0.8rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.85rem; font-weight:600;">Lamb Roast Beef</span>
+        <span style="font-size:0.8rem; color:var(--accent2);">265 SEK</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.3rem;">Tender lamb with potato gratin, forest mushrooms, green beans, red wine reduction. <span style="color:var(--accent); font-size:0.7rem;">★ House Classic</span></p>
+    </div>
+    <div style="background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:0.8rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.85rem; font-weight:600;">Toast Skagen (Half / Whole)</span>
+        <span style="font-size:0.8rem; color:var(--accent2);">139 / 209 SEK</span>
+      </div>
+      <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.3rem;">Creamy hand-peeled shrimp salad with dill, horseradish, on butter-toasted brioche.</p>
+    </div>
+  </div>
+
+  <!-- Tech Specs -->
+  <h3 style="margin-top:1.5rem;">Technical Specs</h3>
+  <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.6rem;">
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">React 18 + Vite</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">JSON Menu Data</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">i18n (SV/EN)</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">Dark/Light Theme</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">LocalBusiness Schema</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">Bordsbokaren Integration</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">Git Deploy CMS</span>
+    <span style="background:var(--surface2); border:1px solid var(--border); padding:0.3rem 0.8rem; border-radius:6px; font-size:0.75rem;">WebP + Lazy Loading</span>
+  </div>
+</div>
+
+<!-- WHAT WE BUILT (DIGITAL LIFT) — PHASES FOR NEW CLIENTS -->
+<div class="section">
+  <h2><span class="icon">📦</span> Digital Lift — Repeatable Package for New Clients</h2>
+  <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:1rem;">
+    The Port Arthur site is the template. Every restaurant in the Yüsel-Gerges network (and beyond) gets the same proven stack:
+  </p>
+
+  <div class="cards-3">
+    <div class="card">
+      <h4>Phase 1: First Aid</h4>
+      <ul>
+        <li>WordPress optimization</li>
+        <li>English booking flow fix (Caspeco localization lock)</li>
+        <li>SEO scrub (noindex dead routes)</li>
+        <li>Mobile friction removal (tel: links, Maps deep-links)</li>
+        <li>Target: Recover ~150K SEK/yr lost from international bookings</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Phase 2: Headless Architecture</h4>
+      <ul>
+        <li>Replace WordPress with fast static stack</li>
+        <li>WhatsApp-driven content management</li>
+        <li>JSON-driven menu system (SV/EN)</li>
+        <li>Theme customization (dark/light/seasonal)</li>
+        <li>Git-deploy menu updates (simple CMS)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Menu Psychology</h4>
+      <ul>
+        <li>Strip "kr" suffix (reduces pain of paying)</li>
+        <li>Break price-scanning alignment</li>
+        <li>High-margin dish anchoring ("House Classics")</li>
+        <li>QR bridge: physical menu → digital experience</li>
+        <li>Sensory language in dish descriptions</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Phase 3: Retainer</h4>
+      <ul>
+        <li>Ongoing maintenance & updates</li>
+        <li>Hosting, security, backups</li>
+        <li>Content updates (menu, events, blog)</li>
+        <li>Analytics reporting & SEO monitoring</li>
+        <li>3,000-5,000 SEK/month per restaurant</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- IP & LEGAL NOTE -->
+<div class="section">
+  <h2><span class="icon">📋</span> IP & Legal — Before You Start</h2>
+  <div class="cards-2">
+    <div class="card">
+      <h4>🔒 IP Ownership</h4>
+      <ul>
+        <li>The Digital Lift platform, tools, and codebase remain YOUR intellectual property</li>
+        <li>Client owns their content (text, images, menu data)</li>
+        <li>White-label/reseller rights must be explicitly granted in writing</li>
+        <li>Do NOT start work without a signed agreement covering IP</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📝 Pilot Agreement Must Include</h4>
+      <ul>
+        <li>Exact scope (Phase 1 only, 2-3 weeks)</li>
+        <li>What happens after pilot (revenue split terms)</li>
+        <li>Number of introductions committed (3-5 restaurants)</li>
+        <li>Timeline for introductions (within 30 days)</li>
+        <li>Termination clause (either party can walk away)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COOPERATION MODELS -->
+<div class="section">
+  <h2><span class="icon">🤝</span> Cooperation Models</h2>
+
+  <div class="model-cards">
+    <div class="model-card">
+      <h4>Referral</h4>
+      <div class="split">15-20%</div>
+      <p>They refer, you deliver, they get commission. Low commitment.</p>
+    </div>
+    <div class="model-card">
+      <h4>White-Label</h4>
+      <div class="split">30-40%</div>
+      <p>They sell under their brand. You fulfill. Stronger incentive.</p>
+    </div>
+    <div class="model-card recommended">
+      <span class="rec-badge">RECOMMENDED</span>
+      <h4>Pilot → Scale</h4>
+      <div class="split">Free → 50/50</div>
+      <p>Do Arthur free/discounted. They introduce 3-5 restaurants. Split revenue after pilot.</p>
+    </div>
+    <div class="model-card">
+      <h4>Joint Venture</h4>
+      <div class="split">50/50</div>
+      <p>Formal partnership. They bring clients, you build. Shared risk & revenue.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <h3>Recommended: Pilot → Scale Flow</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <p><strong>Meeting</strong><br>Today — align on vision</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <p><strong>Pilot</strong><br>Do Arthur free/reduced as showcase</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <p><strong>Introductions</strong><br>They bring 3-5 restaurants from network</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <p><strong>Deliver & Split</strong><br>You deliver, 70/30 split (their favor)</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <p><strong>Scale</strong><br>Formalize reseller/JV agreement</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROS & CONS -->
+<div class="section">
+  <h2><span class="icon">⚖️</span> Partnership — Pros & Cons</h2>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>✓ Pros</h4>
+      <ul>
+        <li>They have real restaurant industry connections</li>
+        <li>Family owns 4+ restaurants (built-in portfolio)</li>
+        <li>They see the value — already interested in reselling</li>
+        <li>You have a done audit + product ready to deploy</li>
+        <li>Port Arthur (est. 1918) is a strong flagship case study</li>
+        <li>Young, tech-open contact in Marcus</li>
+        <li>Lindholmen Science Park nearby (Volvo, Geely, Ericsson corporate clients)</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>✗ Cons</h4>
+      <ul>
+        <li>Marcus is a suppleant — NOT the decision maker</li>
+        <li>Father Patrick controls the network — need him involved</li>
+        <li>Restaurang Arthur AB shows 0 revenue — financial health unclear</li>
+        <li>"Connections in restaurant business" is vague — unverified</li>
+        <li>Risk they learn from you and do it themselves</li>
+        <li>Small operations (0-10 employees each) = limited budgets</li>
+        <li>Two of four portfolio restaurants have "Inte tillfredsst." profit</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COUNCIL DEEP DIVE -->
+<div class="section">
+  <h2><span class="icon">🎯</span> Council Deep Dive</h2>
+  <div class="verdict-grid">
+    <div class="verdict-card">
+      <h4>🧠 Strategy (Glenn)</h4>
+      <div class="rating" style="color:var(--green);">8/10</div>
+      <p>Strong fit. They bring distribution, you bring product. The Pilot→Scale model de-risks both sides. Key: get Patrick (brother, chairman) in the room or on a call within 7 days. Don't build for free beyond the pilot without a written agreement. Also: Suzanne Gerges is a co-director — she's been in this game since at least the 1990s (born 1971). She could be an even better network connector than Marcus.</p>
+    </div>
+    <div class="verdict-card">
+      <h4>💰 Financial (CFO)</h4>
+      <div class="rating" style="color:var(--yellow);">5/10</div>
+      <p>Red flag: 0 SEK revenue on paper. Either the entity is dormant or revenue flows elsewhere. Ask Marcus directly. Portfolio restaurants are small (4-10 employees). Budgets will be tight. Don't over-invest upfront. Note: Porta Porta AB is the cash cow (19.2M SEK, "Mycket bra" profit) — that's where the money is.</p>
+    </div>
+    <div class="verdict-card">
+      <h4>⚙️ Technical (Tech Lead)</h4>
+      <div class="rating" style="color:var(--green);">9/10</div>
+      <p>The product is scoped and ready. Phase 1 is 2-3 weeks of work. The JSON-driven menu + headless architecture is repeatable across all 4 restaurants in the portfolio. This is a product, not a one-off project. Phase 3 (Retainer) adds recurring revenue.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COUNCIL PERSONAS -->
+<div class="section">
+  <h2><span class="icon">👥</span> Council Personas</h2>
+  <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:1rem;">
+    This brief was reviewed by 5 personas, each representing a different lens on the opportunity:
+  </p>
+  <div class="cards-3">
+    <div class="card">
+      <h4>🧠 Glenn — CEO/Strategy</h4>
+      <p>Focus: Deal structure, partnership model, long-term play. Verdict: GO. The Pilot→Scale model is the right approach. Get Patrick involved.</p>
+    </div>
+    <div class="card">
+      <h4>💰 CFO Lens</h4>
+      <p>Focus: Financial health, revenue verification, budget reality. Verdict: CAUTION. 0 SEK entity is a red flag. Verify real numbers before committing free work.</p>
+    </div>
+    <div class="card">
+      <h4>⚙️ Tech Lead</h4>
+      <p>Focus: Product readiness, technical feasibility, repeatability. Verdict: GO. The Digital Lift is a real product. Phase 1→2→3 is a clear roadmap.</p>
+    </div>
+    <div class="card">
+      <h4>📈 Sales Lens</h4>
+      <p>Focus: Network value, decision-making, closing. Verdict: CAUTION. Marcus is the front door, not the gatekeeper. Push for named introductions.</p>
+    </div>
+    <div class="card">
+      <h4>⚖️ Legal/Deal</h4>
+      <p>Focus: IP protection, agreement structure, risk mitigation. Verdict: CAUTION. Draft a pilot agreement before the meeting. Clarify IP ownership.</p>
+    </div>
+    <div class="card">
+      <h4>🔍 Research</h4>
+      <p>Focus: Due diligence, network mapping, competitive intel. Verdict: GO. Full Allabolag profiles done. Yüsel-Gerges network mapped. 4 companies, 3 key people.</p>
+    </div>
+  </div>
+
+<!-- MEETING GOALS -->
+<div class="section">
+  <h2><span class="icon">🎯</span> Meeting Goals — How to Get There</h2>
+
+  <div class="goal-item">
+    <div class="goal-num">1</div>
+    <div class="goal-text">
+      <h4>Confirm the operating entity</h4>
+      <p>Restaurang Arthur AB shows 0 revenue. Ask: "Which entity actually runs the restaurant?" Get real revenue numbers.</p>
+    </div>
+  </div>
+  <div class="goal-item">
+    <div class="goal-num">2</div>
+    <div class="goal-text">
+      <h4>Map the decision-making structure</h4>
+      <p>Patrick (brother, chairman) controls the portfolio. Marcus (brother, deputy) is the front door. Understand: does Marcus have autonomy to commit, or does Patrick need to approve? What about Suzanne Gerges?</p>
+    </div>
+  </div>
+  <div class="goal-item">
+    <div class="goal-num">3</div>
+    <div class="goal-text">
+      <h4>Quantify their network</h4>
+      <p>"Connections in restaurant business" is vague. Push for specifics: How many? Which restaurants? Decision-makers? Target: get a list of 3-5 named restaurants.</p>
+    </div>
+  </div>
+  <div class="goal-item">
+    <div class="goal-num">4</div>
+    <div class="goal-text">
+      <h4>Align on the Pilot → Scale model</h4>
+      <p>Propose: We do Arthur as a showcase (free/reduced). They introduce 3-5 restaurants. We deliver at 70/30 split. After 3 restaurants, formalize the partnership.</p>
+    </div>
+  </div>
+  <div class="goal-item">
+    <div class="goal-num">5</div>
+    <div class="goal-text">
+      <h4>Walk out with commitments</h4>
+      <p>Target: Either a signed pilot agreement OR a written list of 3-5 restaurants they'll introduce within 30 days. No vague "let's stay in touch."</p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem; background:rgba(108,92,231,0.1); border:1px solid var(--accent); border-radius:10px; padding:1rem 1.2rem;">
+    <p style="font-size:0.85rem;"><strong>🔑 Critical Success Factor:</strong> If Patrick Yüksel (brother, chairman, 5 board seats) is NOT in this meeting, schedule a follow-up with him within 7 days. The partnership only works if the decision-maker is engaged. Marcus is the front door — Patrick is the gatekeeper.</p>
+  </div>
+</div>
+
+<!-- KEY QUESTIONS -->
+<div class="section">
+  <h2><span class="icon">❓</span> Key Questions to Ask</h2>
+
+  <div class="question">
+    <div class="q">"Is Restaurang Arthur AB the entity that runs the restaurant, or is it operated under a different name?"</div>
+    <div class="why">→ Allabolag shows 0 revenue. Need to understand the real financial picture.</div>
+  </div>
+  <div class="question">
+    <div class="q">"What's your role day-to-day vs Patrick's? Who decides on tech and investment?"</div>
+    <div class="why">→ Marcus is a suppleant. Patrick is chairman with 5 board seats and controls the portfolio. You need to understand the brother dynamic and who has final say.</div>
+  </div>
+  <div class="question">
+    <div class="q">"Did you move forward on the digital transformation we scoped in May?"</div>
+    <div class="why">→ You already did the audit. Confirm current status and pick up where you left off.</div>
+  </div>
+  <div class="question">
+    <div class="q">"Who in your network would benefit most from this? Can you name 3-5 restaurants?"</div>
+    <div class="why">→ Push past vague "connections" to concrete names and decision-makers.</div>
+  </div>
+  <div class="question">
+    <div class="q">"Would you prefer to be the face of this, or work behind the scenes?"</div>
+    <div class="why">→ Determines the partnership model (white-label vs referral vs JV).</div>
+  </div>
+  <div class="question">
+    <div class="q">"What would make this worth your time — revenue share, flat referral fee, or something else?"</div>
+    <div class="why">→ Align incentives early. Don't assume what motivates them.</div>
+  </div>
+  <div class="question">
+    <div class="q">"Can we use Port Arthur as the showcase if we do the project at reduced rate?"</div>
+    <div class="why">→ The flagship case study is critical for selling to their network.</div>
+  </div>
+</div>
+
+<!-- RED FLAGS -->
+<div class="section">
+  <h2><span class="icon">🚩</span> Red Flags to Watch For</h2>
+
+  <div class="red-flag">
+    <span class="icon">⚠️</span>
+    <p><strong>Marcus ≠ sole decision maker.</strong> He's a suppleant. His brother Patrick (chairman, 5 board seats) controls the portfolio. If Marcus can't commit to involving Patrick, the partnership has no foundation. Suzanne Gerges is also a co-director — she may need to be in the loop too.</p>
+  </div>
+  <div class="red-flag">
+    <span class="icon">⚠️</span>
+    <p><strong>"Connections" without names.</strong> If they can't name specific restaurants and decision-makers, the network value is unverified. Push hard for specifics.</p>
+  </div>
+  <div class="red-flag">
+    <span class="icon">⚠️</span>
+    <p><strong>Learn-and-leave risk.</strong> They may want to understand your process and replicate it. Structure the deal so ongoing delivery stays with you. Don't give away the playbook for free.</p>
+  </div>
+  <div class="red-flag">
+    <span class="icon">⚠️</span>
+    <p><strong>0 SEK revenue entity.</strong> Either the AB is dormant or money flows elsewhere. Don't commit significant free work without understanding their financial capacity.</p>
+  </div>
+  <div class="red-flag">
+    <span class="icon">⚠️</span>
+    <p><strong>Scope creep on the pilot.</strong> If doing Arthur free/reduced, define exact scope in writing. "Free website" can become "free website + SEO + content + maintenance."</p>
+  </div>
+</div>
+
+<!-- PRE-MEETING CHECKLIST -->
+<div class="section">
+  <h2><span class="icon">✅</span> Pre-Meeting Checklist</h2>
+  <ul class="checklist">
+    <li><input type="checkbox"> Review the handoff doc (digital-lift-restaurants/port-arthur-case-study/handoff to engineering.md)</li>
+    <li><input type="checkbox"> Prepare ROI number: ~150K SEK/year recovery from broken English booking flow</li>
+    <li><input type="checkbox"> Decide your preferred partnership model (recommend: Pilot → Scale)</li>
+    <li><input type="checkbox"> Have a revenue split number ready (suggest 70/30 in their favor for first 3 restaurants)</li>
+    <li><input type="checkbox"> Prepare a simple scope document for the Arthur pilot (Phase 1 only, 2-3 weeks)</li>
+    <li><input type="checkbox"> Set walk-away condition: no free work beyond pilot without written agreement</li>
+    <li><input type="checkbox"> Plan to ask for Patrick's involvement in the partnership discussion</li>
+    <li><input type="checkbox"> Target: walk out with pilot agreement OR list of 3-5 named restaurants</li>
+  </ul>
+</div>
+
+<!-- WALK-AWAY FRAMEWORK -->
+<div class="section">
+  <h2><span class="icon">🚪</span> Walk-Away Framework</h2>
+  <div class="cards-2">
+    <div class="card">
+      <h4>🟢 Green Light — Proceed</h4>
+      <ul>
+        <li>Marcus confirms Patrick will be involved (even if not in the room)</li>
+        <li>They name 3+ specific restaurants/decision-makers</li>
+        <li>They agree to Pilot → Scale model</li>
+        <li>Real revenue numbers are reasonable (>500K SEK/yr)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🔴 Red Light — Walk Away</h4>
+      <ul>
+        <li>Patrick won't engage and Marcus can't decide</li>
+        <li>No specific restaurant names after pushing</li>
+        <li>They want everything for free with no commitment</li>
+        <li>They want you to teach them so they can do it themselves</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- NETWORK LEVERAGE -->
+<div class="section">
+  <h2><span class="icon">💡</span> Network Leverage Plays</h2>
+  <p style="font-size:0.82rem; color:var(--text-dim); margin-bottom:1rem;">
+    If the partnership materializes, here's how to use the Yüsel-Gerges network as a distribution channel:
+  </p>
+  <div class="cards-2">
+    <div class="card">
+      <h4>🎯 Immediate Opportunities</h4>
+      <ul>
+        <li><strong>Porta Porta AB</strong> — Best performing (19.2M SEK, "Mycket bra" profit). Patrick is ledamot here. Natural second client after Arthur.</li>
+        <li><strong>Pizzeria Bella Mia AB</strong> — Struggling profit. Could be a turnaround case study. Suzanne is suppleant here.</li>
+        <li><strong>Kockens Hjärta i Gamlestan AB</strong> — Old Town location, tourism potential. 4 employees = small but strategic.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🚀 Expansion Plays</h4>
+      <ul>
+        <li><strong>Suzanne Gerges's network</strong> — 4 board positions, born 1971 (experienced). She likely knows other restaurant owners outside the Yüsel group.</li>
+        <li><strong>Karl Gustav Håkan Kjellström</strong> — Shared connection across all 4 companies. Could be an investor or advisor with broader reach.</li>
+        <li><strong>Restaurant industry connections</strong> — Marcus specifically mentioned they have connections. Get names. Every name is a potential client.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Prepared by OWL for Mathias — Port Arthur Meeting Brief v2, June 5, 2026</p>
+  <p style="margin-top:0.3rem;">Council: Glenn (Strategy) · CFO · Tech Lead · Sales · Legal · Research — All verdicts updated with full Yüsel-Gerges network map</p>
+</div>
+
+</div>
+</body>
+</html>
