@@ -36,3 +36,10 @@ env/
 .env.development.local
 .env.test.local
 .env.production.local
+
+# mex AST index — generated, rebuilt by `mex graph index`.
+# The -wal/-shm sidecars are live SQLite journal state and change on every
+# read, so tracking them produces permanent spurious diffs.
+.mex/graph.db
+.mex/graph.db-shm
+.mex/graph.db-wal
